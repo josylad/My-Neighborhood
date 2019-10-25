@@ -2,6 +2,43 @@
 
 
 {% block content %}
+{% if user.is_authenticated %}
+{{block.super}}
+
+<div class="container pt-4 mt-4">
+    <p>Choose your Neighborhood:</p>
+    
+  <form action="{% url 'index' %}" method="get">
+    <input type = "text" list = "neighborhood" name="neighborhood"> 
+    <datalist id = "neighborhood">
+      {% for neighborhood in neighborhoods %}
+      <option value = "{{neighborhood}}">
+      {% endfor %}
+    </datalist>
+    <input type = "submit" value = "confirm">
+  </form>
+</div>
+<div class="container pt-4 mt-2">
+  {% if location %}
+    <h4 class="font-weight-bold">Here are Businesses in {{message}}</h4>
+    {% for biz in location%}
+      <p>{{biz.name}}</p>
+      <p>{{biz.address}}</p>
+      <hr>
+
+      {% endfor %}
+    
+  {% endif %}
+<hr>
+  <!-- {% for biz in location%}
+  <p>{{biz.name}}</p>
+  <p>{{biz.address}}</p>
+  <hr>
+
+  {% endfor %} -->
+</div>
+
+{% else %}
 
 <div style="background:url('/media/images/homebg2.jpg'); height: 100vh; background-size: cover; background-position: center;"> 
 
@@ -37,78 +74,7 @@
 
 
 </div>
-<div class="pt-4 mt-4"></div>
-
+{% endif %}
 <!-- end of landing layout -->
-<div class="container-fluid">
-  <div class="mb-2 pb-2 pl-4 pr-2 ml-4 mr-1">
-      <h4 class="display-6 font-weight-bold"> Sites of the day </h4>
-  </div>
-
-    <div class="row pl-2 pr-2 ml-1 mr-1">
-        {% for business_item in business %}
-            <div class="col-lg-4">
-                <div class="card-deck">
-                
-                    <div class="card mb-2 mt-2">
-                      <!-- Card image -->
-                    <div class="view overlay zoom">
-                        {% if business_item.business_image %}
-                        <a href="/business/{{business_item.id}}">
-                        <img class="card-img-top" src="{{business_item.business_image.url}}" alt="{{ business_item.business_name }}" height="300px">
-                        </a>
-                        {% else %}
-                        <a href="/business/{{business_item.id}}">
-                        <img  class="card-img-top" src="https://source.unsplash.com/1600x900/?fun,vacation" alt="{{ business_item.business_name }}">
-                        </a>
-                        {% endif %}
-                        
-                        <a href="/business/{{business_item.id}}">
-                          <div class="mask rgba-black-light">
-                              <!-- <div class="d-flex justify-content-end">
-                               <a href="{{business_item.link}}" target="_blank" title="Visit site"> <button type="button" class="btn btn-light px-3"><i class="fas fa-directions" aria-hidden="true"></i></button>
-                              </a></div> -->
-                            <!-- <img class="ico-svg" src="/media/images/redo-arrow (2).png" alt=""> -->
-                          </div>
-                        </a>
-                      </div>
-                
-                      <div class="card-body pr-2 pl-2 pr-2 mr-2">
-                        <h5 class="card-title ml-4">{{ business_item.name }}</h5>
-                        <div class="row ml-2">
-                          <div class="col-lg-6 dark-text"> <small> <span class="mr-1"> From {{business_item.neighborhood.country.name}} </span> <img src="{{business_item.neighborhood.country.flag}}" alt=" {{business_item.neighborhood.country.name}} flag">  </small> </div>
-                          <div class="col-lg-6 dark-text d-flex justify-content-end"> <small> {{business_item.pub_date|date:"d /m/Y"}} </small> </div>
-                        </div>
-                      </div>
-                      <div class="card-footer">
-                        <small class="text-muted ml-2"><img src="{{ business_item.Author.profile.photo.url }}" alt="" class="rounded-circle img-fluid mr-1" style="width: 30px;">
-                        BY {{business_item.Admin.first_name|upper}} </small>
-                      </div>
-                    </div>
-                  
-                
-                  </div>
-                <!-- end of card deck  -->
-
-            </div>
-      {% endfor %}
-    </div>
-    <div class="container pt-4 mt-4">
-      <p>Choose your Neighborhood:</p>
-    <form action="{% url 'index' %}" method="get">
-      <input type = "text" list = "neighborhood" name="neighborhood"> 
-      <datalist id = "neighborhood">
-        <option value = "Berlin">
-      </datalist>
-      <input type = "submit" value = "confirm">
-    </form>
-
-    {% for biz in location%}
-    <p>{{biz.name}}</p>
-    <p>{{biz.address}}</p>
-
-    {% endfor %}
-  </div>
-</div>
 
 {% endblock %}
