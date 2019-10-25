@@ -1,0 +1,145 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/favicon-16x16.png">
+
+  {% if title %}
+  <title>My Neighborhood - {{title}}</title>
+  {% else %}
+    <title> My Neighborhood </title>
+  {% endif %}
+ 
+
+  {% block styles %}
+    
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/css/mdb.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/basenews.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+  {% endblock %}
+
+</head>
+
+<body>
+    {% include "navbar.html" %}
+
+    {% block content %} 
+    
+    
+    {%endblock%}
+
+  
+
+
+
+    {% block scripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+     <!-- JQuery -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <!-- Bootstrap tooltips -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+      <!-- Bootstrap core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+      <!-- MDB core JavaScript -->
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.8.10/js/mdb.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+
+    {% endblock %}
+    <div class="pt-4 mt-4 mb-4 pb-4"></div>
+    <!-- Footer -->
+    <footer class="page-footer font-small bg-dark mt-4 pt-4">
+
+        <!-- Footer Links -->
+    <div class="container-fluid text-center text-md-left">
+  
+        <!-- Grid row -->
+        <div class="row">
+    
+          <!-- Grid column -->
+          <div class="col-md-6 mt-md-0 mt-3">
+    
+            <!-- Content -->
+            <h6 class="text-uppercase pl-2 ml-2">The awards for design, creativity and innovation on the Internet</h6>
+            <p> <span class="font-weight-bold pl-2 ml-2">Follow Us:</span>  Twitter Facebook YouTube</p>
+    
+          </div>
+          <!-- Grid column -->
+    
+          <hr class="clearfix w-100 d-md-none pb-3">
+    
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+    
+            <!-- Links -->
+            <!-- <h5 class="text-uppercase">Links</h5> -->
+    
+            <ul class="list-unstyled">
+              <li>
+                <a href="#!">About Us</a>
+              </li>
+              <li>
+                <a href="#!">Jobs</a>
+              </li>
+              <li>
+                <a href="#!">Winners</a>
+              </li>
+              <li>
+                <a href="#!">Nominees</a>
+              </li>
+            </ul>
+    
+          </div>
+          <!-- Grid column -->
+    
+          <!-- Grid column -->
+          <div class="col-md-3 mb-md-0 mb-3">
+    
+            <!-- Links -->
+            <!-- <h5 class="text-uppercase">Links</h5> -->
+            <a href="https://twitter.com/josylad?ref_src=twsrc%5Etfw" target="_blank" class="twitter-follow-button" data-size="large" data-show-screen-name="false" data-lang="en" data-show-count="false">Follow @josylad</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>          
+            <!-- <ul class="list-unstyled">
+              <li>
+                <a href="#!">Link 1</a>
+              </li>
+              <li>
+                <a href="#!">Link 2</a>
+              </li>
+              <li>
+                <a href="#!">Link 3</a>
+              </li>
+              <li>
+                <a href="#!">Link 4</a>
+              </li>
+            </ul> -->
+    
+          </div>
+          <!-- Grid column -->
+    
+        </div>
+        <!-- Grid row -->
+    
+      </div>
+      <!-- Footer Links -->
+  
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">© 2019 Copyright.
+        <a href="https://github.com/josylad"> Joseph Adediji</a>
+      </div>
+      <!-- Copyright -->
+    
+    </footer>
+  <!-- Footer -->
+</body>
+
+</html>
