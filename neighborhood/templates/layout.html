@@ -35,14 +35,18 @@
 <body class="grey lighten-5">
     {% include "navbar.html" %}
 
+
+    <div style="height: 100vh;">
     {% block content %} 
-    <div class="jumbotron jumbotron-fluid bg-light mb-1 pb-3 pt-3">
+    <div class="jumbotron jumbotron-fluid bg-info mb-1 pb-3 pt-3">
         <div class="">
           <h2 class="display-5 text-center font-weight-bold text-white">Welcome to My Neighborhood</h2>
+          <p class="text-center font-weight-bold text-white">SELECT YOUR NEIGHBORHOOD TO GET STARTED</p>
         </div>
       </div>
     
     {%endblock%}
+  </div>
 
   
 
@@ -63,7 +67,7 @@
 
 
     {% endblock %}
-    <div class="mb-4 pb-4"></div>
+
     <!-- Footer -->
 <footer class="page-footer font-small bg-dark mt-4 pt-4">
 

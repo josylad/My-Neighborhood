@@ -14,9 +14,9 @@ from django.contrib import messages
 
 def index(request):
     date = dt.date.today()
-    business = Business.get_allbusiness()
-    # neighborhood = request.GET['']
-    # business_location = Business.get_by_neighborhood(neighborhood)
+    # business = Business.get_allbusiness()
+    neighborhoods = Neighborhood.get_neighborhoods()
+    
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         neighborhoods = request.GET.get("neighborhood")
         searched_neighborhood = Business.get_by_neighborhood(neighborhoods)
@@ -27,7 +27,7 @@ def index(request):
     else:
         message = "No Neighborhood Found!"
 
-    return render(request, 'index.html', {"date": date, "business":business})
+    return render(request, 'index.html', {"date": date, "neighborhoods":neighborhoods,})
 
 def register(request):
     if request.method == 'POST':
@@ -72,11 +72,14 @@ def get_business(request, id):
 @login_required(login_url='/accounts/login/')
 def new_business(request):
     current_user = request.user
+    profile = request.user.profile
+
     if request.method == 'POST':
         form = NewBusinessForm(request.POST, request.FILES)
         if form.is_valid():
             project = form.save(commit=False)
-            project.Author = current_user
+            project.Admin = current_user
+            project.admin_profile = profile
             project.save()
         return redirect('index')
 
