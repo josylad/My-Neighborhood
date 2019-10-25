@@ -9,19 +9,20 @@ This is a web application which is similar to awwwards.com. The application will
 
 ## User Story
 
-- Users need to Sign in to the application to post projects and review projects.
+- Users need to Sign in to the application to start using it
 
-- Users can view different projects and their details. 
+- Users can Set up a profile about them and a general location and their neighborhood name
 
-- Users can post a project to be rated/viewed.
+- Users Find a list of different businesses in my neighborhood.
 
-- Users can search for different projects.
+- Users can search for different businesses in their neighborhood.
 
--  Users can view projects overall score. 
+-  Users can Find Contact Information for the health department and Police authorities near my neighborhood. 
 
--  Users can view their profile page with all their published projects. 
+-  Users can Change their neighborhood when I decide to move out.
 
--  Users can rate/review other users' projects.
+-  Users can Only view details of a single neighborhood.
+
 
 
 # **SETUP/INSTALLATION.**
