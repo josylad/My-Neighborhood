@@ -24,16 +24,7 @@
         <button class="btn btn-md btn-outline-info font-weight-bold" data-toggle="modal" data-target="#neighborhood"> Add Neighborhood</button>
         </div>
         <hr>
-        <h4 class="font-weight-bold">My Projects</h4>
-        <hr>
-        {% if projects %}
-        {% for project_item in projects%}
-        <a href="/project/{{project_item.id}}"><img src="{{ project_item.project_image.url }}" alt="" class="rounded img-fluid mr-1 pt-1 pb-1" style="width: 300px; height: 300px;"></a>
-        {% endfor %}
-
-        {% else %}
-        <p>You have not submitted any projects</p>
-        {% endif %}
+       
         
     </div>
     <!-- empty div -->
