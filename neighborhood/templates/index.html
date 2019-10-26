@@ -1,41 +1,103 @@
-{%extends 'layout.html'%}
+{%extends 'layout.html' %}
 
 
 {% block content %}
 {% if user.is_authenticated %}
 {{block.super}}
 
-<div class="container pt-4 mt-4">
-    <p>Choose your Neighborhood:</p>
-    
-  <form action="{% url 'index' %}" method="get">
-    <input type = "text" list = "neighborhood" name="neighborhood"> 
-    <datalist id = "neighborhood">
-      {% for neighborhood in neighborhoods %}
-      <option value = "{{neighborhood}}">
-      {% endfor %}
-    </datalist>
-    <input type = "submit" value = "confirm">
-  </form>
-</div>
-<div class="container pt-4 mt-2">
-  {% if location %}
-    <h4 class="font-weight-bold">Here are Businesses in {{message}}</h4>
-    {% for biz in location%}
-      <p>{{biz.name}}</p>
-      <p>{{biz.address}}</p>
-      <hr>
+<div class="row container-fluid">
+  <div class="col-lg-10 pr-1 pl-1">
+      <div class="container pt-4 mt-4">
+          <p class="font-weight-bold">Choose your Neighborhood:</p>
+          
+        <form class="" action="{% url 'index' %}" method="get">
 
-      {% endfor %}
-    
-  {% endif %}
-<hr>
-  <!-- {% for biz in location%}
-  <p>{{biz.name}}</p>
-  <p>{{biz.address}}</p>
-  <hr>
+          <!-- Grid row -->
+        <div class="row">
+            <!-- Grid column -->
+            <div class="col">
+              <!-- Default input -->
+              <select name="neighborhood" class="form-control  form-control-lg">
+                  {% for neighborhood in all_neighborhoods %}
+                  <option value="{{neighborhood.name}}">{{neighborhood.name}}</option>
+                  {% endfor %}
+                </select>     
+            </div>
+            <!-- Grid column -->
+        
+            <!-- Grid column -->
+            <div class="col">
+              <!-- Default input -->
+              <button type = "submit" class="btn btn-outline-dark btn-md">FIND BUSINESSES</button>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+        </form>
 
-  {% endfor %} -->
+      </div>
+
+      <div class="container pt-4 mt-2 mb-4 pb-4">
+
+        {% if location %}
+            <!-- start of table  --> 
+          <div class="table-responsive">
+            <table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead class="black white-text">
+                  <tr class="font-weight-bold">
+                    <th class="th-sm">Business Name
+                    </th>
+                    <th class="th-sm">Business Address
+                    </th>
+                    <th class="th-sm">Business Email
+                    </th>
+                    <th class="th-sm">Neighborhood
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for biz in location%}
+                  <tr>
+                    <td>{{biz.name}}</td>
+                    <td>{{biz.address}}</td>
+                    <td>{{biz.email}}</td>
+                    <td>{{biz.neighborhood.name}}</td>
+                    
+                  </tr>
+            {% endfor %}
+
+                  
+                </tbody>
+                <!-- <tfoot>
+                  <tr>
+                  <th class="th-sm">Name
+                    </th>
+                    <th class="th-sm">Address
+                    </th>
+                    <th class="th-sm">Email
+                    </th>
+                    <th class="th-sm">Neighborhood
+                    </th>
+                  </tr>
+                </tfoot> -->
+              </table>
+          </div>
+            <!-- end of table  -->
+
+            {% else %}
+            <p>Nothing found. Choose a Location and Hit the Search Button.</p>
+          
+        {% endif %}
+
+      </div>
+    </div>
+    <div class="col-lg-2 container-fluid">
+      <div class="container pt-4 mt-4">
+      <h4>{{message}} News</h4>
+      </div>
+    </div>
+
 </div>
 
 {% else %}
@@ -58,9 +120,9 @@
                       <!-- Divider -->
                       <hr class="hr-light">
                       <!-- <p class="font-weight-bold white-text">The awards of design, creativity and innovation on the internet</p> -->
-                      <a href="/accounts/login"><button type="button" class="btn btn-outline-white">Login<i class="fa fa-book ml-2"></i></button>
+                      <a href="/accounts/login"><button type="button" class="btn btn-outline-default">Login<i class="fa fa-book ml-2"></i></button>
                       </a>
-                      <a href="accounts/register"><button type="button" class="btn btn-outline-white">Sign Up<i class="fa fa-book ml-2"></i></button>
+                      <a href="accounts/register"><button type="button" class="btn btn-outline-default">Sign Up<i class="fa fa-book ml-2"></i></button>
                       </a>
                   </div>
 
