@@ -114,7 +114,7 @@ class Business(models.Model):
     
     @classmethod
     def get_by_neighborhood(cls, neighborhoods):
-        business = cls.objects.filter(neighborhood__name=neighborhoods)
+        business = cls.objects.filter(neighborhood__name__icontains=neighborhoods)
         return business
     
     @classmethod
