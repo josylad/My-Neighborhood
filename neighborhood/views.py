@@ -15,19 +15,21 @@ from django.contrib import messages
 def index(request):
     date = dt.date.today()
     # business = Business.get_allbusiness()
-    neighborhoods = Neighborhood.get_neighborhoods()
+    all_neighborhoods = Neighborhood.get_neighborhoods()
     
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         neighborhoods = request.GET.get("neighborhood")
         searched_neighborhood = Business.get_by_neighborhood(neighborhoods)
         message = f"{neighborhoods}"
-
-        return render(request, 'index.html', {"message":message,"location": searched_neighborhood})
+        all_neighborhoods = Neighborhood.get_neighborhoods()        
+        
+        return render(request, 'index.html', {"message":message,"location": searched_neighborhood,
+                                               "all_neighborhoods":all_neighborhoods,})
 
     else:
         message = "No Neighborhood Found!"
 
-    return render(request, 'index.html', {"date": date, "neighborhoods":neighborhoods,})
+    return render(request, 'index.html', {"date": date, "all_neighborhoods":all_neighborhoods,})
 
 def register(request):
     if request.method == 'POST':
@@ -50,7 +52,7 @@ def search_businesses(request):
         searched_projects = Business.search_business(search_term)
         message = f"{search_term}"
 
-        return render(request, 'search.html', {"message":message,"projects": searched_projects})
+        return render(request, 'search.html', {"message":message,"businesses": searched_projects})
 
     else:
         message = "You haven't searched for any term"
