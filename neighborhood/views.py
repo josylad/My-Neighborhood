@@ -17,14 +17,16 @@ def index(request):
     # business = Business.get_allbusiness()
     all_neighborhoods = Neighborhood.get_neighborhoods()
     
+    
     if 'neighborhood' in request.GET and request.GET["neighborhood"]:
         neighborhoods = request.GET.get("neighborhood")
         searched_neighborhood = Business.get_by_neighborhood(neighborhoods)
+        all_posts = Posts.get_by_neighborhood(neighborhoods)
         message = f"{neighborhoods}"
         all_neighborhoods = Neighborhood.get_neighborhoods()        
         
         return render(request, 'index.html', {"message":message,"location": searched_neighborhood,
-                                               "all_neighborhoods":all_neighborhoods,})
+                                               "all_neighborhoods":all_neighborhoods, "all_posts":all_posts})
 
     else:
         message = "No Neighborhood Found!"
@@ -109,7 +111,6 @@ def user_profiles(request):
         if form.is_valid():
             profile = form.save(commit=False)
             profile.save()
-            print("*********** Form 1")
             return redirect('profile')
             
     else:
@@ -118,3 +119,23 @@ def user_profiles(request):
 
     return render(request, 'registration/profile.html', {"form":form, "form2":form2})
 
+
+@login_required(login_url='/accounts/login/')
+def new_post(request):
+    current_user = request.user
+    profile = request.user.profile
+    neighborhood = request.user.profile.neighborhood
+
+    if request.method == 'POST':
+        form = NewPostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.Author = current_user
+            post.author_profile = profile
+            post.neighborhood = neighborhood
+            post.save()
+        return redirect('index')
+
+    else:
+        form = NewPostForm()
+    return render(request, 'new-post.html', {"form": form})
