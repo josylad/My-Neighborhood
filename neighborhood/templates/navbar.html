@@ -47,9 +47,16 @@
           {% endif %}
           <div class="col-sm-6 col-lg-6 d-flex justify-content-end">
               {% if user.is_authenticated %}
-              <ul><li class="nav-item">
-                  <a class="nav-link btn text-white btn-outline-white" href="{%url 'new-business'%}">ADD BUSINESS </a>
-                </li></ul>
+              <ul>
+                <li class="nav-item">
+                  <a class="nav-link font-weight-bold text-white " href="{%url 'new-business'%}">ADD BUSINESS </a>
+                </li>
+              </ul>
+              <ul>
+                <li class="nav-item">
+                    <a class="nav-link font-weight-bold text-white" href="{%url 'new-post'%}">ADD POST </a>
+                  </li>
+              </ul>
               <ul>
                 <li class="dropdown list-unstyled text-white">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink-4" data-toggle="dropdown"
