@@ -27,12 +27,12 @@
         </li>
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{%url 'new-post'%}"> ADD POST </a>
+          <a class="nav-link font-weight-bold" href="{%url 'new-post'%}"> ADD POST </a>
         </li>
         {% endif %}
-        <!-- <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li>  -->
+        <li class="nav-item">
+          <a class="nav-link font-weight-bold" href="{%url 'new-business'%}">ADD BUSINESS</a>
+        </li> 
         </ul>
        
       <!-- Links -->
@@ -48,9 +48,9 @@
           <div class="col-sm-6 col-lg-6 d-flex justify-content-end">
               {% if user.is_authenticated %}
               <ul>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <a class="nav-link font-weight-bold text-white " href="{%url 'new-business'%}">ADD BUSINESS</a>
-                </li>
+                </li> -->
                 </ul>
               <ul>
                 <li class="dropdown list-unstyled text-white">
