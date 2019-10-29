@@ -5,7 +5,7 @@
 
 # DESCRIPTION
 
-This is a web application which is similar to awwwards.com. The application will allow a user to post a project he/she has created and get it reviewed by people.
+This is a web application allows you to be in the loop about everything happening in your neighborhood. From contact information of different handyman to meeting announcements or even alerts.
 
 ## User Story
 
