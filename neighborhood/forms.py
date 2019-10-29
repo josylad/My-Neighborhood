@@ -44,3 +44,11 @@ class RegisterForm(RegistrationForm):
             self.fields[fieldname].help_text = None
         self.helper.form_show_labels = True 
         
+        
+class NewPostForm(forms.ModelForm):
+    class Meta:
+        model = Posts
+        exclude = ['Author', 'pub_date', 'author_profile', 'neighborhood']
+        widgets = {
+          'post': forms.Textarea(attrs={'rows':2, 'cols':10,}),
+        }
