@@ -14,7 +14,7 @@ django-registration==2.4.1
 django-star-ratings==0.8.0
 django-tinymce==2.8.0
 django-widget-tweaks==1.4.5
-djangorestframework==3.10.3
+djangorestframework==3.11.2
 gunicorn==19.9.0
 isort==4.3.21
 lazy-object-proxy==1.4.2
